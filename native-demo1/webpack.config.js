@@ -34,6 +34,10 @@ module.exports = {
         chunks: [file], // 与入口文件对应的模块名
       })
     }),
+    new webpack.DefinePlugin({
+      appName: JSON.stringify('HelloWorld'),
+      demoList: JSON.stringify(pageList),
+    }),
   ],
   devServer: {
     //配置服务端口号
