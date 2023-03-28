@@ -10,12 +10,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 
 const scene = new THREE.Scene()
 
-const camera = new THREE.PerspectiveCamera(
-  70,
-  window.innerWidth / window.innerHeight,
-  0.01,
-  10
-)
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10)
 camera.position.z = 1
 
 const geometry1 = new THREE.BoxGeometry(0.2, 0.2, 0.2)
@@ -76,7 +71,7 @@ function animation(time) {
   mesh1.rotation.y = time / 1000
   renderer.render(scene, camera)
   controls.update()
-  bloomComposer.render(scene, camera)
+  // bloomComposer.render(scene, camera)
 }
 
 // renderer.render(scene, camera)
