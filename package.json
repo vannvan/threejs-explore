@@ -1,0 +1,23 @@
+{
+  "name": "threejs-explore",
+  "version": "1.0.0",
+  "description": "![](https://p.ipic.vip/1b6fjh.gif)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vannvan/threejs-explore.git"
+  },
+  "keywords": [],
+  "author": "vannvan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vannvan/threejs-explore/issues"
+  },
+  "homepage": "https://github.com/vannvan/threejs-explore#readme",
+  "dependencies": {
+    "readme-md-generator": "^1.0.0"
+  }
+}
