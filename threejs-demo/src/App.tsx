@@ -1,13 +1,12 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import './app.css'
+import './App.css'
 
 const lazyLoad = (moduleName: string) => {
-  const Module = lazy(() => import(`./pages/${moduleName}`))
+  const Module = lazy(() => import(`./pages/${moduleName}/index.tsx`))
   return <Module />
 }
-
-const modulesFiles = import.meta.globEager('./pages/*/index.tsx')
+const modulesFiles = import.meta.glob('./pages/*/index.tsx', { eager: true })
 
 const pages = Object.keys(modulesFiles).map((key) => {
   const match = key.match(/pages\/(\S*)\//)

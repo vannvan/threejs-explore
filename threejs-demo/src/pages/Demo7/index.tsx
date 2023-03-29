@@ -3,10 +3,16 @@ import * as THREE from 'three'
 import './index.css'
 
 const Demo = () => {
-  useEffect(() => {
-    main()
-  }, [])
-
+  function resizeRendererToDisplaySize(renderer: THREE.WebGLRenderer) {
+    const canvas = renderer.domElement
+    const width = canvas.clientWidth
+    const height = canvas.clientHeight
+    const needResize = canvas.width !== width || canvas.height !== height
+    if (needResize) {
+      renderer.setSize(width, height, false)
+    }
+    return needResize
+  }
   function main() {
     const canvas = document.querySelector('#c') as HTMLElement
     const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvas })
@@ -187,17 +193,6 @@ const Demo = () => {
     splineObject.position.y = 0.05
     scene.add(splineObject)
 
-    function resizeRendererToDisplaySize(renderer: THREE.WebGLRenderer) {
-      const canvas = renderer.domElement
-      const width = canvas.clientWidth
-      const height = canvas.clientHeight
-      const needResize = canvas.width !== width || canvas.height !== height
-      if (needResize) {
-        renderer.setSize(width, height, false)
-      }
-      return needResize
-    }
-
     const targetPosition = new THREE.Vector3()
     const tankPosition = new THREE.Vector2()
     const tankTarget = new THREE.Vector2()
@@ -263,10 +258,15 @@ const Demo = () => {
 
     requestAnimationFrame(render)
   }
+
+  useEffect(() => {
+    main()
+  }, [])
+
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ position: 'relative' }}>
       <div id="info" style={{}}></div>
-      <canvas id="c" style={{ width: '100vw', height: '100vh' }}></canvas>
+      <canvas id="c"></canvas>
     </div>
   )
 }
